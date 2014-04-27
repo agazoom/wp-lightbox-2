@@ -96,6 +96,7 @@ function jqlb_register_settings(){
 	register_setting( 'jqlb-settings-group', 'jqlb_resize_speed', 'jqlb_pos_intval');
 	register_setting( 'jqlb-settings-group', 'jqlb_help_text');
 	register_setting( 'jqlb-settings-group', 'jqlb_link_target');
+	register_setting( 'jqlb-settings-group', 'jqlb_pinterest_pinit');
 	
 	//register_setting( 'jqlb-settings-group', 'jqlb_follow_scroll', 'jqlb_bool_intval');
 	add_option('jqlb_help_text', '');
@@ -106,6 +107,7 @@ function jqlb_register_settings(){
 	add_option('jqlb_show_download', 0); 
 	add_option('jqlb_navbarOnTop', 0);
 	add_option('jqlb_resize_speed', 400); 
+	add_option('jqlb_pinterest_pinit', 0);
 	//add_option('jqlb_follow_scroll', 0);  
 }
 function jqlb_register_menu_item() {		
@@ -144,6 +146,8 @@ function jqlb_js() {
 		'resizeCenter' => get_option('jqlb_resizeCenter'),
 		'marginSize' => get_option('jqlb_margin_size'),
 		'linkTarget' => get_option('jqlb_link_target'),
+		'pinterestPinIt' => get_option('jqlb_pinterest_pinit'),
+		'siteURL' => get_option('siteurl'),
 		//'followScroll' => get_option('jqlb_follow_scroll'),
 		/* translation */
 		'help' => __(get_option('jqlb_help_text'), 'jqlb'),
@@ -274,6 +278,13 @@ _top: open the image in the full body of the window', 'jqlb') ?>"><?php _e('Targ
 			<td colspan="2">					
 				<input type="text" id="jqlb_resize_speed" name="jqlb_resize_speed" value="<?php echo intval(get_option('jqlb_resize_speed')) ?>" size="3" />
 				<label for="jqlb_resize_speed"><?php _e('Animation duration (in milliseconds) ', 'jqlb') ?></label>			
+			</td>
+		</tr>
+		<tr valign="baseline" colspan="2">
+			<td colspan="">
+				<?php $check = get_option('jqlb_pinterest_pinit') ? ' checked="yes" ' : ''; ?>
+				<input type="checkbox" id="jqlb_pinterest_pinit" name="jqlb_pinterest_pinit" value="1" <?php echo $check; ?>/>
+				<label for="jqlb_pinterest_pinit" title="<?php _e('Let users pin images to Pinterest', 'jqlb') ?>"> <?php _e('Display Pinterest pinit button on lightbox (only for images with captions)', 'jqlb') ?></label>
 			</td>
 		</tr>
 		<tr valign="baseline" colspan="2">			

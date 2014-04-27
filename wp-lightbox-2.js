@@ -64,7 +64,7 @@
                 opts.imageArray = parser(opts.jsonData);
             }
             var outerImage = '<div id="outerImageContainer"><div id="imageContainer"><iframe id="lightboxIframe" /><img id="lightboxImage"><div id="hoverNav"><a href="javascript://" title="' + opts.strings.prevLinkTitle + '" id="prevLink"></a><a href="javascript://" id="nextLink" title="' + opts.strings.nextLinkTitle + '"></a></div><div id="loading"><a href="javascript://" id="loadingLink"><div id="jqlb_loading"></div></a></div></div></div>';
-            var imageData = '<div id="imageDataContainer" class="clearfix"><div id="imageData"><div id="imageDetails"><span id="caption"></span><span id="numberDisplay"></span></div><div id="bottomNav">';
+            var imageData = '<div id="imageDataContainer" class="clearfix"><div id="imageData"><div id="imageDetails"><span id="caption"></span><span id="numberDisplay"></span></div><div id="pinterest"></div><div id="bottomNav">';
             if (opts.displayHelp) {
                 imageData += '<span id="helpDisplay">' + opts.strings.help + '</span>';
             }
@@ -379,6 +379,9 @@
             if (nav_html != '') {
                 $('#numberDisplay').html(nav_html).show();
             }
+            if (opts.pinterestPinIt && opts.imageArray[opts.activeImage][1]) {
+                $('#pinterest').html('<a href="#" onclick="window.open(&#39//www.pinterest.com/pin/create/button/?url='+encodeURIComponent(opts.siteURL)+'&media='+encodeURIComponent(opts.imageArray[opts.activeImage][0])+'&description='+encodeURIComponent($(opts.imageArray[opts.activeImage][1]).text())+'&#39, &#39Hello&#39, &#39width=300,height=100&#39)" data-pin-do="buttonPin" data-pin-config="none" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_28.png" /></a>').show();
+            }
         };
 
         function updateNav() {
@@ -507,6 +510,8 @@
 			resizeSpeed: (haveConf && JQLBSettings.resizeSpeed >= 0) ? JQLBSettings.resizeSpeed : 400,
 			displayDownloadLink: (haveConf && JQLBSettings.displayDownloadLink == '0') ? false : true,
 			navbarOnTop: (haveConf && JQLBSettings.navbarOnTop == '0') ? false : true,
+            pinterestPinIt: (haveConf && JQLBSettings.pinterestPinIt == '1') ? true : false,
+            siteURL: (haveConf && JQLBSettings.siteURL) ? JQLBSettings.siteURL : '',
 			//followScroll: (haveConf && JQLBSettings.followScroll == '0') ? false : true,
 			strings: (haveConf && typeof JQLBSettings.help == 'string') ? JQLBSettings : default_strings
 		});	

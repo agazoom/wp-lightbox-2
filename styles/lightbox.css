@@ -23,6 +23,7 @@
 	background-image:url('./images/closelabel.gif');
 	background-repeat:no-repeat;				
 	background-position:center center;
+	padding-top: 5px;
 }	
 
 #lightbox a img{ border: none; }
@@ -104,7 +105,8 @@ margin-left: 10px;
 #imageData{
 	padding:0 10px;
 	}
-#imageData #imageDetails{ width: 70%; float: left; text-align: left; }	
+#imageData #imageDetails{ width: 33%; float: left; text-align: left; }	
+#imageData #pinterest{ width: 33%; float: left; text-align: left; }	
 #imageData #caption{ font-weight: bold;	}
 #imageData #numberDisplay{ display: block; clear: left; padding-bottom: 1.0em;	}
 #imageData #bottomNavClose{ width: 66px; float: right;  padding-bottom: 0.7em;	}
@@ -147,3 +149,10 @@ margin-left: 10px;
 #lightboxIframe {
 	display: none;
 }	
+
+#pinterest a {
+  	width: 56px;
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+}
